@@ -9,23 +9,9 @@ class CustomersController extends Controller
 {
     public function list()
     {
-        $activeCustomers = Customer::where('active', 1)->get();
-        $inactiveCustomers = Customer::where('active', 0)->get();
+        $activeCustomers = Customer::active()->get();
+        $inactiveCustomers = Customer::inactive()->get();
 
-        //dd($activeCustomers);
-
-        //$customers = Customer::all();
-
-        // $customers = [
-        //     'Brandon Marwa',
-        //     'Francis Nyongesa',
-        //     'Peter Marangi',
-        // ];
-        //  return view('internals.customers', [
-        //      //'customers' => $customers,
-        //      'activeCustomers' => $activeCustomers,
-        //      'inactiveCustomers' => $inactiveCustomers
-        //  ]);
          return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
     }
 
@@ -37,12 +23,7 @@ class CustomersController extends Controller
             'active' => 'required',
         ]);
 
-        $customer = new Customer();
-        $customer->name = request('name');
-        $customer->email = request('email');
-        $customer->active = request('active');
-        $customer->save();
-
+        $customer = Customer::create($data);
         return back();
         //dd(request('name'));
     }

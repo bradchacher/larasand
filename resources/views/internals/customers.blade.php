@@ -27,6 +27,12 @@
                     <div>{{ $errors->first('email') }}</div>
                 </div>
 
+                {{-- <div class="form-group">
+                    <label for="random">Random</label>
+                    <input class="form-control" type="text" name="email" value="{{old('email')}}">
+                    <div>{{ $errors->first('email') }}</div>
+                </div> --}}
+
                 <div class="form-group">
                     <label for="active">Status</label>
                     <select name="active" id="active" class="form-control">
@@ -42,20 +48,6 @@
     </div>
 
     <hr>
-{{--
-    <div class="row">
-        <div class="col-12">
-            <h5>Active Customer</h5>
-            <ul>
-                @foreach ($activeCustomers as $activeCustomer )
-                <li> {{ $activeCustomer->name }} <span class="text-muted">({{ $activeCustomer->email }}) </li>
-
-                @endforeach
-                <li></li>
-            </ul>
-        </div>
-    </div> --}}
-
 
       <div class="row">
         <div class="col-6">
@@ -81,12 +73,3 @@
     </div>
 
 @endsection
-
-{{-- @endsection
-<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="about">About Us</a></li>
-    <li><a href="contact">Contact Us</a></li>
-    <li><a href="customers">Customers</a></li>
-</ul> --}}
-
